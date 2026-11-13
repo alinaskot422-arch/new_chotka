@@ -1,0 +1,73 @@
+@use "../common/variables" as *;
+@use "../common/mixins" as *;
+@use "../common/extend" as *;
+
+.photo-grid {
+    &__wrap {
+        @include flex-column(0, center);
+        margin-top: 80px;
+        margin-bottom: 100px;
+    }
+
+    &__intro {
+        text-align: center;
+        margin-bottom: 40px;
+
+        @include mobile {
+            text-align: left;
+        }
+    }
+
+    &__heading {
+        font-family: $font-main;
+        font-weight: 800;
+        font-size: 32px;
+        line-height: 120%;
+        color: $color-text;
+
+        @include mobile {
+            font-size: 24px;
+        }
+    }
+
+    &__list {
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+
+        img:first-child,
+        img:nth-child(5) {
+            grid-column: span 2;
+        }
+
+        @include mobile {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 32px;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            img {
+                flex: 0 0 75%;
+                width: 75%;
+                height: 250px;
+                object-fit: cover;
+                border-radius: 8px;
+                scroll-snap-align: center;
+            }
+        }
+    }
+
+    &__action {
+        @extend %btn-base;
+        margin-top: 30px;
+        padding: 16px 36px;
+    }
+}
