@@ -1,0 +1,146 @@
+@use "../common/variables" as *;
+@use "../common/mixins" as *;
+@use "../common/extend" as *;
+
+.screen-cover {
+    min-height: 100vh;
+    background-image: url("../../image/hero/Rectangle 1.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    @include flex-column();
+
+    @include mobile {
+        width: 100%;
+        min-height: 600px;
+    }
+}
+
+.cover {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 80px;
+
+    @include mobile {
+        padding-bottom: 50px;
+    }
+
+    &__wrap {
+        width: 100%;
+    }
+
+    &__heading {
+        font-family: $font-logo;
+        font-weight: 700;
+        font-size: 50px;
+        line-height: 140%;
+        color: $color-light;
+        text-transform: uppercase;
+        max-width: 980px;
+        padding-bottom: 41px;
+
+        @include mobile {
+            font-size: 28px;
+            line-height: 1.5;
+            max-width: 320px;
+        }
+    }
+
+    &__search {
+        background: rgba(253, 253, 253, 0.2);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        border: 1px solid rgba(253, 253, 253, 0.2);
+        border-radius: 10px;
+        @include flex-row(24px, flex-start);
+        padding: 40px 42px;
+
+        @include mobile {
+            background: transparent;
+            backdrop-filter: none;
+            border: none;
+            padding: 0;
+            flex-direction: column;
+            gap: 16px;
+        }
+    }
+}
+
+.search-block {
+    flex: 1;
+    @include flex-column(8px);
+
+    @include mobile {
+        display: none;
+    }
+
+    &__select {
+        width: 100%;
+        padding: 14px 16px;
+        font-family: $font-main;
+        font-size: 16px;
+        color: $color-light;
+        border: 1px solid #e1e3e4;
+        border-radius: 8px;
+        outline: none;
+        background: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+    }
+
+    &__date {
+        position: relative;
+        width: 100%;
+    }
+
+    &__input {
+        width: 100%;
+        padding: 14px 16px;
+        font-family: $font-main;
+        font-size: 16px;
+        color: $color-light;
+        border: 1px solid #e1e3e4;
+        border-radius: 8px;
+        outline: none;
+        background: transparent;
+        cursor: pointer;
+
+        &::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            cursor: pointer;
+        }
+    }
+
+    &__hint {
+        font-family: $font-main;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 150%;
+        color: $color-light;
+        padding-left: 8px;
+    }
+
+    &__submit {
+        @extend %btn-base;
+        font-weight: 700;
+        background-color: $color-light;
+        color: $color-primary;
+        padding: 16px 26px;
+        border: none;
+        cursor: pointer;
+        white-space: nowrap;
+
+        &:hover {
+            background-color: rgba($color-light, 0.9);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+        }
+
+        @include mobile {
+            width: 100%;
+        }
+    }
+}

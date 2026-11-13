@@ -1,0 +1,70 @@
+@use "../common/variables" as *;
+@use "../common/mixins" as *;
+@use "../common/extend" as *;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-family: $font-main;
+    scroll-behavior: smooth;
+}
+
+section {
+    scroll-margin-top: 90px;
+}
+
+.layout {
+    max-width: $container-width;
+    width: 100%;
+    margin: 0 auto;
+
+    @include mobile {
+        max-width: 360px;
+        padding: 0 20px;
+    }
+}
+
+.action-btn {
+    @extend %btn-base;
+    padding: 12px 24px;
+
+    &:hover {
+        background-color: $color-primary-hover;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(26, 62, 62, 0.25);
+    }
+
+    &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 6px rgba(26, 62, 62, 0.2);
+    }
+}
+
+.caption {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.2;
+    color: $color-accent;
+    padding-bottom: 8px;
+    display: block;
+
+    @include mobile {
+        font-size: 16px;
+    }
+}
+
+.heading {
+    font-family: $font-main;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 120%;
+    color: $color-text;
+
+    @include mobile {
+        font-size: 24px;
+    }
+}
